@@ -61,8 +61,8 @@
 ### 개발자 정보
 - **이름**: 전민서
 - **전공**: 스마트소프트웨어공학과
-- **GitHub**: [@github계정](https://github.com/계정명)
-- **이메일**: [이메일 주소]
+- **GitHub**: (https://github.com/alseo0110)
+- **이메일**: alseo0110@naver.com
 
 ### 관심 분야
 - 데이터 분석 및 머신러닝
@@ -110,14 +110,13 @@
 
 ### 📊 데이터 분석 결과
 <!-- 주요 분석 결과 시각화들을 추가해주세요 -->
-| 상관관계 히트맵 | 지역별 발생량 | 예측 성능 |
-|----------------|-------------|-----------|
-| ![히트맵](이미지경로) | ![발생량차트](이미지경로) | ![성능차트](이미지경로) |
+| 상관관계 히트맵 | 예측 성능 |
+|----------------|-----------|
+| ![히트맵](이미지경로) | ![성능차트](이미지경로) |
 
 ### 📈 모델 성능
 - **MAE (Mean Absolute Error)**: [수치 입력]
 - **RMSE (Root Mean Square Error)**: [수치 입력]  
-- **R² Score**: [수치 입력]
 
 ---
 
@@ -235,7 +234,7 @@ seoul-mosquito-forecast/
 - **문제 해결**: Google Colab 한글 폰트 문제 등 실무에서 발생할 수 있는 이슈들을 직접 해결
 
 ### 😅 아쉬운 점
-- **데이터 수집 범위**: 더 다양한 환경 요인(습도, 풍속 등) 데이터를 추가로 수집하지 못함
+- **데이터 수집 범위**: 더 다양한 환경 요인 데이터와 서울시 모기예보제의 짧은 데이터로 인한 아쉬움
 - **모델 다양성**: RandomForest 외에 다른 알고리즘(XGBoost, LSTM 등)과의 성능 비교 부족
 - **실시간 예측**: 실시간 데이터 수집 및 예측 시스템 구축까지는 진행하지 못함
 - **검증 데이터**: 모델 예측 결과의 실제 정확도 검증을 위한 추가 데이터 부족
@@ -276,62 +275,17 @@ seoul-mosquito-forecast/
 - [ ] **모델 고도화**: XGBoost, LSTM 등 다양한 알고리즘 적용 및 앙상블 기법 도입
 - [ ] **추가 데이터 확보**: 미세먼지, 습도, 풍속 등 추가 환경 요인 데이터 수집
 - [ ] **실시간 예측 시스템**: API를 통한 실시간 데이터 수집 및 예측 시스템 구축
-- [ ] **웹 애플리케이션 개발**: 일반 사용자가 쉽게 활용할 수 있는 웹 인터페이스 구현
-- [ ] **모델 해석성 강화**: SHAP, LIME 등을 활용한 모델 예측 근거 설명 기능 추가
-- [ ] **지역 확대**: 서울시 외 수도권 지역으로 예측 범위 확장
+- [ ] **웹 애플리케이션 개발**: 협업을 통해 일반 사용자가 쉽게 활용할 수 있는 웹 인터페이스 구현
 
 ### 🎯 다음 프로젝트 계획
 이 프로젝트의 경험을 바탕으로 **"농수산물 가격 예측 모델"**을 다음 목표로 설정했습니다. 마찬가지로 공공데이터를 활용하되, 시계열 분석과 딥러닝 기법을 더 깊이 있게 적용해보고 싶습니다.
 
 ---
 
-## 🚀 설치 및 실행 방법
-
-### 요구사항
-- Python 3.8 이상
-- Google Colab 계정 (권장)
-
-### 로컬 환경 설치
-```bash
-# 저장소 클론
-git clone https://github.com/your-username/seoul-mosquito-forecast.git
-
-# 프로젝트 디렉토리로 이동
-cd seoul-mosquito-forecast
-
-# 의존성 설치
-pip install -r requirements.txt
-```
-
-### Google Colab 실행 (권장)
-1. [Google Drive에 프로젝트 업로드](https://drive.google.com)
-2. Colab에서 노트북 파일 열기
-3. 다음 코드로 한글 폰트 설정:
-```python
-!apt-get install -y fonts-nanum
-import matplotlib.font_manager as fm
-fm._rebuild()
-```
-
 ### 데이터 준비
 1. [서울 열린데이터 광장](https://data.seoul.go.kr)에서 모기예보 데이터 다운로드
 2. [기상청 기상자료개방포털](https://data.kma.go.kr)에서 날씨 데이터 다운로드
 3. `data/raw/` 폴더에 데이터 파일 배치
-
-### 실행 순서
-```bash
-# 1. 데이터 탐색
-jupyter notebook notebooks/01_data_exploration.ipynb
-
-# 2. 데이터 전처리
-jupyter notebook notebooks/02_data_preprocessing.ipynb
-
-# 3. 모델 훈련
-jupyter notebook notebooks/03_model_training.ipynb
-
-# 4. 시각화 및 분석
-jupyter notebook notebooks/04_visualization.ipynb
-```
 
 ---
 
@@ -342,12 +296,6 @@ jupyter notebook notebooks/04_visualization.ipynb
 **GitHub**: [@your-username](https://github.com/your-username)  
 **이메일**: alseo0110@naver.com  
 **Issues**: [Issues 페이지](https://github.com/your-username/seoul-mosquito-forecast/issues)
-
----
-
-## 📄 라이센스
-
-이 프로젝트는 [MIT 라이센스](LICENSE) 하에 배포됩니다.
 
 ---
 
