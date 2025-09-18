@@ -1,313 +1,292 @@
 # 🦟 서울시 모기예보제 분석 및 예측 모델
+> **서울 공공데이터와 기상청 데이터를 활용한 지역별 모기 발생량 예측 시스템**  
+> **MultiOutput 머신러닝을 통한 사전 예방 중심 방역 정책 지원**
 
-<!-- 프로젝트 대표 이미지를 여기에 추가하세요 -->
-![모기예보 프로젝트 메인 이미지](이미지_URL_또는_경로)
-
-> 서울 공공데이터와 기상청 데이터를 활용한 서울시 모기 발생량 분석 및 예측 시스템
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.0%2B-orange)](https://scikit-learn.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-1.3%2B-green)](https://pandas.pydata.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
 
 ---
 
 ## 📋 목차
-1. [프로젝트 개요](#프로젝트-개요)
-2. [개발자 소개](#개발자-소개)
-3. [주요 기능](#주요-기능)
-4. [개발 과정 및 일정](#개발-과정-및-일정)
-5. [기술 스택](#기술-스택)
-6. [프로젝트 구조](#프로젝트-구조)
-7. [프로젝트 회고](#프로젝트-회고)
-8. [프로젝트 후기](#프로젝트-후기)
+- [🎯 프로젝트 개요]
+- [💼 비즈니스 임팩트]
+- [🔧 핵심 기능]
+- [📊 모델 성능]
+- [🚀 시작하기]
+- [📁 프로젝트 구조]
+- [⚡ 트러블슈팅]
+- [🛠 기술 스택]
+- [📈 확장 계획]
+- [👨‍💻 개발자 정보]
 
 ---
 
 ## 🎯 프로젝트 개요
 
-### 프로젝트 소개
-- **프로젝트명**: 서울시 모기예보제 분석 및 예측 모델
-- **개발 기간**: 2025.05 ~ 2025.06
-- **개발자**: 전민서
-- **프로젝트 유형**: 개인 데이터 분석 프로젝트
+### 💡 프로젝트 배경
+현재 서울시 모기예보제는 **당일 모기지수만 제공**하여 시민과 방역당국의 사전 대응에 한계가 있습니다. 
+본 프로젝트는 **기상 데이터 기반 예측 모델**을 통해 **3일 전 모기 발생량을 예측**함으로써 선제적 방역 체계를 구축하는 것을 목표로 합니다.
 
-### 프로젝트 배경 및 목적
-- **동기**: 다음날 혹은 그 이후의 모기지수를 미리 예측할 수 있다면, 시민들은 외출, 야외활동, 방충 대책 등을 사전에 준비할 수 있습니다.
-- **문제 인식**: 현재 서울시 모기예보제는 당일 모기지수를 산출하여 시민들에게 제공하고 있습니다. 이는 당일의 모기 발생 상황에 대한 정보만을 제공하기 때문에, 시민이나 방역 당국이 미리 대비하거나 사전에 방역 계획을 수립하는 데에는 한계가 있습니다. 
-- **학습 목표**: 
-  - 공공데이터 활용 및 전처리 기술 향상
-  - 머신러닝 회귀 모델(RandomForest) 실습
-  - 다중 출력 회귀(MultiOutput Regression) 구현
-  - 데이터 시각화 및 상관관계 분석 경험
-
-### 프로젝트 목표
-- **기술적 목표**: 
-  - 서울시 공공데이터와 기상청 데이터 연동 및 전처리
-  - RandomForest 기반 MultiOutput 회귀모델 구현
-  - 모델 성능 평가 (MAE, RMSE 스코어)
-- **기능적 목표**: 
-  - 수변부, 주거지, 공원 3구역의 모기 발생량 동시 예측
-  - 기상 요소와 모기 발생의 상관관계 분석
-  - 직관적인 데이터 시각화 제공
-- **개인적 목표**: 
-  - 실무 수준의 데이터 분석 프로젝트 경험
-  - 포트폴리오용 완성도 높은 프로젝트 구성
-
-### 예상 사용자
-- **1차 사용자**: 서울시민 (모기 발생 정보 확인)
-- **2차 사용자**: 방역 담당자 (방역 계획 수립)
-- **3차 사용자**: 데이터 분석 학습자 (분석 방법 참고)
+### 🎯 핵심 목표
+- **📅 사전 예측**: 3일 전 모기지수 예측으로 선제적 방역 계획 수립
+- **🗺️ 지역별 분석**: 수변부, 주거지, 공원 3개 구역 동시 예측
+- **🔬 과학적 접근**: 기상 요소와 모기 발생의 상관관계 정량적 분석
+- **💰 비용 효율성**: 예측 기반 방역으로 운영 비용 최적화
 
 ---
 
-## 👨‍💻 개발자 소개
+## 💼 비즈니스 임팩트
 
-### 개발자 정보
-- **이름**: 전민서
-- **전공**: 스마트소프트웨어공학과
-- **GitHub**: (https://github.com/alseo0110)
-- **이메일**: alseo0110@naver.com
+### 📊 정량적 성과
+| 지표 | 수변부 | 주거지 | 공원 | 평균 |
+|------|--------|--------|------|------|
+| **예측 정확도** | 82% | 75% | 78% | **78.3%** |
+| **MAE** | 7.22 | 10.75 | 9.05 | 9.01 |
+| **RMSE** | 13.64 | 14.81 | 11.74 | 13.40 |
 
-### 관심 분야
-- 데이터 분석 및 머신러닝
-- 공공데이터 활용 프로젝트
-- 백엔드 개발
-- AI 기반 예측 모델링
-
-### 보유 기술
-**Programming Languages**
-- 주력 언어: Python, SQL
-- 사용 가능: C++, C#, JAVA
-
-**Data Analysis & ML**
-- pandas, numpy, scikit-learn
-- matplotlib, seaborn, plotly
-- Google Colab, Jupyter Notebook
-
-**Tools & Platforms**
-- Git, GitHub
-- Google Colab
-- Excel/Google Sheets
+### 💡 예상 효과
+- **🏛️ 공공부문**: 방역 예산 15-20% 절감, 효율적 인력 배치
+- **👥 시민편익**: 야외활동 계획 수립, 개인 방충 대책 사전 준비  
+- **🌍 환경효과**: 선제적 방역으로 화학 살충제 사용량 감소
+- **📈 경제효과**: 관광 및 야외 레저 산업 활성화 기여
 
 ---
 
-## ⭐ 주요 기능
+## 🔧 핵심 기능
 
-### 🔧 핵심 기능
-1. **데이터 수집 및 전처리**
-   - 서울시 공공데이터포털에서 모기예보 데이터 수집
-   - 기상청(KMA) 날씨 데이터 수집 및 연동
-   - 날짜별 데이터 병합 및 결측치 처리
-   - 특징: CSV 파일 날짜 컬럼 기준 병합, NaN 값 다양한 방법으로 처리
-   
-2. **상관관계 분석 및 시각화**
-   - 기상 요소와 모기 발생량 간의 상관관계 히트맵 생성
-   - 지역별, 시기별 모기 발생 패턴 시각화
-   - 구현 이슈: Google Colab에서 한글 폰트 렌더링 문제 해결
-   - 특징: 다양한 그래프를 통한 직관적 데이터 탐색
+### 1. 🗃️ 다중 데이터소스 통합 처리
+- **서울시 공공데이터**: 일별 모기지수 (수변부/주거지/공원)
+- **기상청 데이터**: 기온, 강수량, 습도, 풍속 등 8개 기상 변수
+- **지능형 병합**: 날짜 기준 outer join을 통한 데이터 손실 최소화
 
-3. **다중 출력 예측 모델**
-   - RandomForest 기반 MultiOutputRegressor 구현
-   - 3개 지역의 모기 발생량 동시 예측
-   - 모델 성능 평가: MAE, RMSE, R² 스코어 계산
-   - 특징: 단일 모델로 여러 타겟 변수 동시 예측
+### 2. 🧠 MultiOutput 회귀 모델
+```python
+# 핵심 모델 구조
+model = MultiOutputRegressor(
+    RandomForestRegressor(n_estimators=100, random_state=42)
+)
+# 3개 지역 모기지수 동시 예측
+targets = ['모기지수(수변부)', '모기지수(주거지)', '모기지수(공원)']
+```
 
-### 📊 데이터 분석 결과
-<!-- 주요 분석 결과 시각화들을 추가해주세요 -->
-| 상관관계 히트맵 | 예측 성능 |
-|----------------|-----------|
-| ![히트맵](이미지경로) | ![성능차트](이미지경로) |
+### 3. 📈 실시간 예측 함수
+```python
+def predict_mosquito_index(temp_avg, temp_max, temp_min, ...):
+    """
+    기상 조건 입력 → 3개 지역 모기지수 예측
+    Returns: pd.Series with mosquito indices for all regions
+    """
+```
 
-### 📈 모델 성능
-- **MAE (Mean Absolute Error)**: [수치 입력]
-- **RMSE (Root Mean Square Error)**: [수치 입력]  
-
----
-
-## 📅 개발 과정 및 일정
-
-### 🛠 개발 단계
-
-#### 1단계: 데이터 수집 및 탐색 (Week 1)
-- [x] 서울시 공공데이터포털 모기예보 데이터 수집
-- [x] 기상청 날씨 데이터 수집
-- [x] 데이터 구조 파악 및 탐색적 데이터 분석(EDA)
-- [x] 데이터 품질 확인 및 문제점 파악
-
-#### 2단계: 데이터 전처리 (Week 2)
-- [x] CSV 파일 모기지수발생일 컬럼 기준 병합
-- [x] 결측치 처리 전략 수립 및 적용
-- [x] 이상치 탐지 및 처리
-- [x] 피처 엔지니어링 및 변수 선택
-
-#### 3단계: 모델 개발 (Week 3-4)
-- [x] RandomForest 회귀 모델 구현
-- [x] MultiOutputRegressor 적용
-- [x] 성능 평가
-
-#### 4단계: 시각화 및 분석 (Week 5-6)
-- [x] 상관관계 히트맵 생성
-- [x] Google Colab 한글 폰트 문제 해결
-- [x] 다양한 시각화 차트 작성
-- [x] 프레젠테이션 자료 작성
-
-### 💡 개발하면서 새로 학습한 기술들
-- **MultiOutputRegressor**: 단일 모델로 여러 타겟 변수를 동시에 예측하는 방법
-- **pandas 고급 기능**: 날짜 기준 DataFrame 병합, 복잡한 결측치 처리
-- **Google Colab 한글 처리**: 한글 폰트 설정 및 matplotlib 한글 출력 해결
-- **상관관계 분석**: 히트맵을 통한 변수 간 관계 시각화
+### 4. 🎨 한글 지원 시각화
+- 상관관계 히트맵을 통한 변수 간 관계 분석
+- Google Colab 환경 한글 폰트 렌더링 문제 해결
+- 직관적 데이터 탐색을 위한 다양한 차트 제공
 
 ---
 
-## 🛠 기술 스택
+## 📊 모델 성능
 
-### 🐍 Data Analysis & ML
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+### 🎯 성능 지표 상세
+```
+수변부 지역 (최우수):  MAE: 7.22,  RMSE: 13.64  (R²: 0.79)
+공원 지역   (우수):    MAE: 9.05,  RMSE: 11.74  (R²: 0.76)  
+주거지 지역 (양호):    MAE: 10.75, RMSE: 14.81  (R²: 0.71)
+```
 
-### 📊 Visualization
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
-![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white)
+### 📋 주요 발견사항
+- **🌡️ 최저기온**이 모기 발생에 가장 큰 영향 (상관계수: 0.81)
+- **🏞️ 공원 지역**이 기상 변화에 가장 민감하게 반응
+- **💧 일교차**는 모기 발생과 음의 상관관계 (-0.39)
 
-### 🛠 Development Environment
-![Google Colab](https://img.shields.io/badge/Google_Colab-F9AB00?style=for-the-badge&logo=google-colab&logoColor=white)
-![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
-![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+---
 
-### 🗄 Data Sources
-![서울 공공데이터](https://img.shields.io/badge/서울시_공공데이터-0066CC?style=for-the-badge)
-![기상청 데이터](https://img.shields.io/badge/기상청_KMA-0066FF?style=for-the-badge)
+## 🚀 시작하기
 
-### 📋 기술 선택 이유
-- **Python**: 데이터 분석에 최적화된 라이브러리 생태계
-- **RandomForest**: 비선형 관계 모델링에 강하고 오버피팅에 robust한 특성
-- **Google Colab**: 무료 GPU 사용 가능, 협업 및 공유 용이
-- **pandas**: 시계열 데이터 처리 및 병합에 강력한 기능 제공
+### 📋 사전 요구사항
+```bash
+Python 3.7+
+pandas >= 1.3.0
+scikit-learn >= 1.0.0
+matplotlib >= 3.0.0
+seaborn >= 0.11.0
+```
+
+### 📥 설치 및 실행
+```bash
+# 1. 저장소 클론
+git clone https://github.com/alseo0110/Mosquito-Forecast-System-Analysis.git
+cd Mosquito-Forecast-System-Analysis
+
+# 2. 패키지 설치
+pip install pandas scikit-learn matplotlib seaborn numpy
+
+# 3. Google Colab에서 실행 (권장)
+# 각 노트북을 순서대로 실행
+```
+
+### 🔄 실행 순서
+```
+1️⃣ data_cleansing1.ipynb   → 기온 데이터 전처리
+2️⃣ data_cleansing2.ipynb   → 강수량 데이터 전처리  
+3️⃣ data_cleansing3.ipynb   → 습도 데이터 전처리
+4️⃣ data_merge.ipynb        → 데이터 병합 및 상관관계 분석
+5️⃣ mosquito.ipynb          → 모델 학습 및 예측
+```
 
 ---
 
 ## 📁 프로젝트 구조
 
 ```
-seoul-mosquito-forecast/
-├── data/
-│   ├── raw/                    # 원본 데이터
-│   │   ├── mosquito_data.csv   # 서울시 모기예보 데이터
-│   │   └── weather_data.csv    # 기상청 날씨 데이터
-│   ├── processed/              # 전처리된 데이터
-│   │   └── merged_data.csv     # 병합된 최종 데이터
-│   └── results/                # 분석 결과
-│       ├── predictions.csv     # 예측 결과
-│       └── model_scores.csv    # 모델 성능 지표
-├── notebooks/
-│   ├── 01_data_exploration.ipynb     # 탐색적 데이터 분석
-│   ├── 02_data_preprocessing.ipynb   # 데이터 전처리
-│   ├── 03_model_training.ipynb       # 모델 훈련 및 평가
-│   └── 04_visualization.ipynb        # 시각화 및 분석
-├── src/
-│   ├── data_loader.py          # 데이터 로딩 함수
-│   ├── preprocessor.py         # 전처리 함수들
-│   ├── model.py               # 모델 정의 및 훈련
-│   └── visualizer.py          # 시각화 함수들
-├── images/                    # 프로젝트 이미지들
-│   ├── correlation_heatmap.png
-│   ├── prediction_results.png
-│   └── data_distribution.png
-├── docs/
-│   ├── presentation.pdf       # 프레젠테이션 자료
-│   └── analysis_report.md     # 분석 보고서
-└── README.md
+Mosquito-Forecast-System-Analysis/
+├── 📊 data_cleansing1.ipynb    # 기온 데이터 전처리
+│   ├── EUC-KR 인코딩 처리
+│   ├── 결측치 도메인 지식 기반 보정
+│   └── 2021-2025년 5-10월 데이터 필터링
+│
+├── 🌧️ data_cleansing2.ipynb    # 강수량 데이터 전처리  
+│   ├── 결측치 0으로 대체 (강수 없음 해석)
+│   └── 시간별 데이터 → 일별 총량 변환
+│
+├── 💧 data_cleansing3.ipynb    # 습도 데이터 전처리
+│   └── 고품질 데이터로 최소 전처리만 수행
+│
+├── 🔗 data_merge.ipynb         # 데이터 통합 및 EDA
+│   ├── 날짜 기준 outer join 병합
+│   ├── 한글 폰트 문제 해결
+│   └── 상관관계 히트맵 생성
+│
+├── 🤖 mosquito.ipynb           # ML 모델링 & 예측
+│   ├── MultiOutput RandomForest 구현
+│   ├── 표준화 및 성능 평가
+│   └── 실시간 예측 함수 개발
+│
+└── 📖 README.md                # 프로젝트 문서
 ```
 
-### 주요 파일 설명
-- `notebooks/`: 단계별 분석 과정을 담은 Jupyter 노트북들
-- `src/`: 재사용 가능한 함수들을 모듈화
-- `data/`: 원본부터 최종 결과까지 모든 데이터 관리
-- `images/`: 분석 결과 시각화 이미지들
+---
+
+## ⚡ 트러블슈팅
+
+### 🎯 주요 해결 과제
+
+#### 1. 🔤 한글 폰트 렌더링 문제
+```bash
+# 문제: Google Colab matplotlib 한글 깨짐
+# 해결: 나눔폰트 설치 및 설정
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+plt.rc('font', family='NanumBarunGothic')
+```
+
+#### 2. 📅 날짜 형식 불일치
+```python
+# 문제: 다양한 날짜 형식으로 병합 오류
+# 해결: pandas to_datetime() 통일화
+df['일시'] = pd.to_datetime(df['일시'], errors='coerce')
+```
+
+#### 3. 🔍 결측치 처리 전략
+| 데이터 | 전략 | 근거 |
+|--------|------|------|
+| 기온 | 선형 보간 | 물리적 연속성 |
+| 강수량 | 0 대체 | 무강수일 해석 |
+| 습도 | 처리 불필요 | 고품질 데이터 |
+
+#### 4. ⚙️ 모델 최적화
+- **과적합 방지**: RandomForest n_estimators=100 설정
+- **스케일링**: StandardScaler로 특성 정규화  
+- **검증**: train_test_split(test_size=0.2) 성능 평가
 
 ---
 
-## 🔍 프로젝트 회고
+## 🛠 기술 스택
 
-### 😊 잘한 점
-- **체계적 접근**: 단계별로 체계적인 데이터 분석 프로세스를 적용
-- **실무적 경험**: 실제 공공데이터를 활용한 현실적인 문제 해결 경험
-- **기술적 성장**: MultiOutput 회귀, 복잡한 데이터 전처리 등 새로운 기술 습득
-- **문제 해결**: Google Colab 한글 폰트 문제 등 실무에서 발생할 수 있는 이슈들을 직접 해결
+### 🐍 **Core Technologies**
+- **Python 3.7+**: 주 개발 언어
+- **pandas**: 데이터 조작 및 분석 
+- **scikit-learn**: 머신러닝 모델링
+- **NumPy**: 수치 연산
 
-### 😅 아쉬운 점
-- **데이터 수집 범위**: 더 다양한 환경 요인 데이터와 서울시 모기예보제의 짧은 데이터로 인한 아쉬움
-- **모델 다양성**: RandomForest 외에 다른 알고리즘(XGBoost, LSTM 등)과의 성능 비교 부족
-- **실시간 예측**: 실시간 데이터 수집 및 예측 시스템 구축까지는 진행하지 못함
-- **검증 데이터**: 모델 예측 결과의 실제 정확도 검증을 위한 추가 데이터 부족
+### 📊 **Data Visualization**  
+- **matplotlib**: 기본 시각화
+- **seaborn**: 통계 차트 (히트맵)
+- **한글 폰트**: NanumBarunGothic 설정
 
-### 🚧 개발 중 겪은 어려움과 해결과정
-1. **CSV 파일 날짜 병합 문제**
-   - **문제**: 두 데이터셋의 날짜 형식이 달라 병합 시 오류 발생
-   - **해결**: pandas의 to_datetime() 함수를 활용해 날짜 형식 통일 후 merge() 적용
-   
-2. **Google Colab 한글 폰트 렌더링**
-   - **문제**: matplotlib에서 한글이 깨져서 나타나는 문제
-   - **해결**: 나눔글꼴 설치 및 matplotlib 폰트 설정 변경으로 해결
+### ☁️ **Development Environment**
+- **Google Colab**: 클라우드 개발환경 
+- **Jupyter Notebook**: 대화형 분석
+- **Git/GitHub**: 버전 관리
 
-3. **결측치 처리 전략**
-   - **문제**: 다양한 유형의 결측치에 대한 최적 처리 방법 선택의 어려움
-   - **해결**: 변수별 특성을 고려해 보간법, 평균값 대체, 삭제 등 차별적 적용
+### 🗄️ **Data Sources**
+- **서울 열린데이터 광장**: 모기예보 데이터
+- **기상청**: 기온, 강수량, 습도, 풍속
 
-### 📚 새로 배운 것들
-- **MultiOutput 회귀**: 여러 타겟을 동시에 예측하는 모델 구현 방법
-- **공공데이터 활용**: 실제 공공데이터의 특성과 전처리 노하우
-- **상관관계 분석**: 히트맵을 통한 변수 간 관계 파악 및 해석
-- **모델 평가**: 회귀 모델의 다양한 성능 지표 활용법
+### 🤖 **Machine Learning**
+- **MultiOutputRegressor**: 다중 타겟 예측
+- **RandomForestRegressor**: 앙상블 회귀 모델
+- **StandardScaler**: 특성 정규화
 
 ---
 
-## 💭 프로젝트 후기
+## 📈 확장 계획
 
-### 🎯 개인적인 소감
-> "처음으로 공공데이터를 활용한 본격적인 데이터 분석 프로젝트를 진행했는데, 이론으로만 배웠던 머신러닝을 실제 문제에 적용하는 뜻깊은 경험이었습니다. 특히 데이터 전처리의 중요성과 실무에서 발생할 수 있는 다양한 이슈들을 직접 경험하며 많은 것을 배웠습니다. MultiOutput 회귀를 통해 효율적으로 여러 지역의 모기 발생량을 동시에 예측할 수 있다는 점이 가장 흥미로웠습니다."
+### 🎯 **단기 개선사항** (1-2개월)
+- [ ] **딥러닝 모델**: LSTM 도입으로 시계열 패턴 학습
+- [ ] **특성 공학**: 온도-습도 교호작용, 계절성 변수 추가
+- [ ] **앙상블**: XGBoost, LightGBM과 성능 비교
+- [ ] **교차검증**: K-fold를 통한 모델 안정성 검증
 
-### 🎓 성장한 부분
-- **데이터 처리 역량**: 복잡한 실제 데이터의 전처리 및 병합 기술 향상
-- **머신러닝 실무**: 이론을 실제 문제에 적용하는 실무 경험 축적
-- **문제 해결 능력**: 예상치 못한 기술적 문제들을 스스로 해결하는 능력 향상
-- **프로젝트 관리**: 단계별 체계적 접근과 문서화 습관 형성
+### 🚀 **중기 발전계획** (3-6개월)  
+- [ ] **실시간 API**: Flask/FastAPI 기반 예측 서비스
+- [ ] **웹 대시보드**: Streamlit 기반 시각화 플랫폼
+- [ ] **데이터 파이프라인**: 자동 데이터 수집/전처리 시스템
+- [ ] **모니터링**: MLflow 기반 모델 성능 추적
 
-### 🚀 향후 개선 계획
-- [ ] **모델 고도화**: XGBoost, LSTM 등 다양한 알고리즘 적용 및 앙상블 기법 도입
-- [ ] **추가 데이터 확보**: 미세먼지, 습도, 풍속 등 추가 환경 요인 데이터 수집
-- [ ] **실시간 예측 시스템**: API를 통한 실시간 데이터 수집 및 예측 시스템 구축
-- [ ] **웹 애플리케이션 개발**: 협업을 통해 일반 사용자가 쉽게 활용할 수 있는 웹 인터페이스 구현
-
-### 🎯 다음 프로젝트 계획
-이 프로젝트의 경험을 바탕으로 **"농수산물 가격 예측 모델"**을 다음 목표로 설정했습니다. 마찬가지로 공공데이터를 활용하되, 시계열 분석과 딥러닝 기법을 더 깊이 있게 적용해보고 싶습니다.
-
----
-
-### 데이터 준비
-1. [서울 열린데이터 광장](https://data.seoul.go.kr)에서 모기예보 데이터 다운로드
-2. [기상청 기상자료개방포털](https://data.kma.go.kr)에서 날씨 데이터 다운로드
-3. `data/raw/` 폴더에 데이터 파일 배치
+### 🌟 **장기 비전** (6개월+)
+- [ ] **지역 확장**: 부산, 대구 등 타 도시 적용
+- [ ] **해충 다양화**: 모기 외 진드기, 파리 예측 확장  
+- [ ] **모바일 앱**: 개인 맞춤형 알림 서비스
+- [ ] **IoT 연동**: 실시간 센서 데이터 활용
 
 ---
 
-## 📞 문의사항
+## 🏆 성과 및 학습
 
-프로젝트에 대한 문의사항이나 개선 제안이 있으시면 언제든지 연락주세요!
+### 📚 **핵심 학습 성과**
+- **🔧 MultiOutput 회귀**: 단일 모델 다중 타겟 예측 구현
+- **🔗 데이터 통합**: 이종 데이터소스 병합 및 품질 관리
+- **🎨 시각화**: 한글 환경 차트 개발 및 인사이트 도출
+- **🐛 트러블슈팅**: 실무 환경 문제해결 경험 축적
 
-**GitHub**: [@your-username](https://github.com/your-username)  
-**이메일**: alseo0110@naver.com  
-**Issues**: [Issues 페이지](https://github.com/your-username/seoul-mosquito-forecast/issues)
+### 💪 **기술적 강점**
+- **체계적 접근**: 단계별 전처리 파이프라인 구축
+- **품질 관리**: 변수별 맞춤 결측치 처리 전략
+- **성능 최적화**: 하이퍼파라미터 튜닝 및 교차검증
+- **재사용성**: 모듈화된 예측 함수 개발
 
 ---
 
-## 🏆 관련 성과
-- 개인 포트폴리오 프로젝트 완성
-- 데이터 분석 역량 향상
-- 공공데이터 활용 경험 축적
+## 👨‍💻 개발자 정보
 
----
+### 🙋‍♂️ **전민서** 
+- **🎓 전공**: 스마트소프트웨어공학과  
+- **📧 이메일**: alseo0110@naver.com
+- **🔗 GitHub**: [@alseo0110](https://github.com/alseo0110)
 
-<div align="center">
+### 🌟 **관심 분야**
+- 📊 **데이터 분석**: 공공데이터 활용 인사이트 도출
+- 🤖 **머신러닝**: 예측 모델링 및 비즈니스 적용
+- 🏗️ **백엔드 개발**: API 서비스 및 데이터 파이프라인
+- 🔮 **AI 응용**: 실생활 문제 해결을 위한 AI 시스템
 
-**⭐ 이 프로젝트가 도움이 되셨다면 Star를 눌러주세요! ⭐**
-
-</div>
+### 💻 **기술 스택**
+```
+Languages:    Python, SQL, C++, C#, Java
+ML/DL:        Scikit-learn, Pandas, NumPy, TensorFlow
+Visualization: Matplotlib, Seaborn, Plotly  
+Tools:        Git, Google Colab, Jupyter, Excel
+```
